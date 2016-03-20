@@ -10,13 +10,16 @@
  */
 
  $(document).ready(function() {
- 	var ref = new Firebase("https://dinosaur-facts.firebaseio.com/dinosaurs");
- 	ref.orderByChild("Fruit").equalTo(25).on("child_added", function(snapshot) {
- 		console.log(snapshot.key());
- 	});
+ 	var ref = new Firebase("https://shopshop1.firebaseio.com/Fruit");
+ 	
 
  	$('#button').click(function() {
  		alert("You clicked a bootin");
+ 		ref.orderByChild("Fruit").equalTo(25).on("child_added", function(snapshot) {
+ 			console.log(snapshot.key());
+
+ 		});
+ 		console.log("I LOVE BUTTONS");
  	});
 
  });
