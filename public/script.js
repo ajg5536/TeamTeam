@@ -15,4 +15,8 @@
  		console.log(snapshot.key());
  	});
 
+ 	$('#button').click(function() {
+ 		alert("You clicked a bootin");
+ 	});
+
  });
