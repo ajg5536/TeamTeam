@@ -15,16 +15,18 @@ console.log("Scripts file loaded");
  	console.log("File loaded");
  	var myFirebaseRef = new Firebase("https://shopshop1.firebaseio.com/");
     //myFirebaseRef.set({name: 'bober', text: 'likes cheese'});
+
+    myFirebaseRef.set({category: "category", name: "product"})
  	
 
- 	$('#button').click(function() {
- 		alert("bottin clifked");
- 		var thiscat = $('#category').val();
- 		var thisprod = $('#name').val();
+ 	$('#bbutton').click(function() {
+ 		//alert("bottin clifked");
+ 		var thiscat = $('#bcategory').val();
+ 		var thisprod = $('#bname').val();
 
- 		myFirebaseref.push({category: thiscat, name: thisprod})
+ 		myFirebaseRef.push({category: thiscat, name: thisprod});
 
- 		console.log("Attempting to add " + thiscat ":" + thisprod + " to the database...");
+ 		console.log("Attempting to add " + thiscat + ":" + thisprod + " to the database...");
  		
  	});
 
