@@ -10,16 +10,18 @@
  */
 
  $(document).ready(function() {
- 	var ref = new Firebase("https://shopshop1.firebaseio.com/Fruit");
+ 	var myFirebaseRef = new Firebase("https://shopshop1.firebaseio.com/");
+    //myFirebaseRef.set({name: 'bober', text: 'likes cheese'});
  	
 
  	$('#button').click(function() {
- 		alert("You clicked a bootin");
- 		ref.orderByChild("Fruit").equalTo(25).on("child_added", function(snapshot) {
- 			console.log(snapshot.key());
+ 		var thiscat = $('#category').val();
+ 		var thisprod = $('#name').val();
 
- 		});
- 		console.log("I LOVE BUTTONS");
+ 		myFirebaseref.push({category: thiscat, name: thisprod})
+
+ 		console.log("Attempting to add " + thiscat ":" + thisprod + " to the database...");
+ 		
  	});
 
  });
