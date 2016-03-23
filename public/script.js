@@ -9,12 +9,16 @@
  * Function - sampleQuery
  */
 
+console.log("Scripts file loaded");
+
  $(document).ready(function() {
+ 	console.log("File loaded");
  	var myFirebaseRef = new Firebase("https://shopshop1.firebaseio.com/");
     //myFirebaseRef.set({name: 'bober', text: 'likes cheese'});
  	
 
  	$('#button').click(function() {
+ 		alert("bottin clifked");
  		var thiscat = $('#category').val();
  		var thisprod = $('#name').val();
 
