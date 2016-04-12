@@ -1,6 +1,13 @@
-[{name: "apple",
-  color: "red"},
- {name: "orange",
-  color: "orange"},
- {name: "banana",
-  color: "yellow"}]
+{
+	"groceries" : {
+		"produce" : {
+			"fruit" : {
+				"apples" : {"quantity": 1},
+				"oranges" : {"quantity": 1},
+				"bananas" : {"quantity": 1},
+				"peaches" : {"quantity": 1},
+				"plums" : {"quantity": 1}
+			}
+		}
+	}
+}

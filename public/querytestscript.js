@@ -9,7 +9,26 @@
  * Function - sampleQuery
  */
  $(document).ready(function () {
+ 	// Change the text of the dropdown menu when it is clicked
+ 	$(".dropdown-menu li a").click(function(){
+ 		$(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+ 		$(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+ 	});
 
+ 	// Button to query the database
+ 	$('#searchButton').click(function() {
+ 		// First clear all items in the results panel
+ 		$('#result-panel').empty();
+ 		queryProduce();
+ 	});
+
+ 	// Button to clear the search results
+ 	$('#clearButton').click(function() {
+ 		$('#result-panel').empty();
+ 	});
+
+
+ 	// Button to force-add a result
  	$("#addButton").click(function () {
  		console.log("Attempting to add result...");
  		if( ($('#result-panel .col-sm-4').length+1) > 5) {
@@ -21,7 +40,7 @@
  		$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">BLACK FRIDAY DEAL</div><div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div><div class="panel-footer">Buy 50 mobiles and get a gift card</div></div></div></div>');
  	});
 
- 	
+ 	// Button to remove a result
  	$("#removeButton").click(function () {
  		console.log("Attempting to remove result...");
  		if ($('#result-panel .col-sm-4').length == 1) {
@@ -31,5 +50,50 @@
 
  		$('#result-panel .col-sm-4:last').remove();
  	});
-	
+
+ 	// Runs a database query
+ 	function queryProduce () {
+ 		var rootRef = new Firebase('https://shopshop1.firebaseio.com/groceries/');	// create a reference to our database
+
+ 		rootRef.on("value", function(snap) {
+ 			var resultObj = snap.val();
+ 			var category = Object.keys(resultObj.produce);
+ 			var items = Object.keys(resultObj.produce.fruit);
+	 		for (var i = 0; i < items.length; i++) {
+	 			appendPanel(category, items[i]);
+	 		}
+ 		}, function (errorObject) {
+ 			console.log("The read failed: " + errorObject.code);
+ 		});
+ 	}
+
+ 	// Adds an item to the result-panel div
+ 	function appendPanel(resultCat, resultVal) {
+ 
+ 			$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">' + resultVal + '</div><div class="panel-body"><img src="images/' + resultVal + '.jpg" class="img-responsive" style="width:100%" alt="Image not found"></div><div class="panel-footer"><button type="button" class="btn btn-secondary">Buy!</button></div></div></div></div>');
+ 	
+ 	}
+
  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -16,7 +16,7 @@ console.log("Scripts file loaded");
  	var myFirebaseRef = new Firebase("https://shopshop1.firebaseio.com/");
     //myFirebaseRef.set({name: 'bober', text: 'likes cheese'});
 
-    myFirebaseRef.set({category: "category", name: "product"})
+    //myFirebaseRef.set({category: "category", name: "product"})
  	
 
  	$('#bbutton').click(function() {
