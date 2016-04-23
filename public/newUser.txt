@@ -1,0 +1,18 @@
+<html>
+<head>
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+<h1>New User</h>
+<form action="" method="post">
+First Name: <input type="text" name="firstName"><br/><br/>
+Last Name: <input type="text" name="lastName"><br/><br/>
+Username: <input type="text" name="username"><br/><br/>
+Password: <input type="password" name="password"><br/><br/>
+Address	: <input type="text" name="street"><br/><br/>
+		Zip: <input type="number" name="zip"><br/><br/>
+ContactNumber: <input type="number" name="zip"><br/><br/>
+<input type="submit" name="submit" value="Submit">
+</form>
+</body>
+</html>
