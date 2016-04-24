@@ -2,8 +2,8 @@
 <head>
 <link rel="stylesheet" href="login.css">
 </head>
-<body>
-<h1>Login Page</h>
+<body background="./images/backgroundBlue.jpg">
+<h1>Login Page</h1>
 <form action="" method="post">
 Username: <input type="text" name="username"><br/><br/>
 Password: <input type="password" name="password"><br/><br/>
