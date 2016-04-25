@@ -19,68 +19,33 @@
   <style>
   /* Remove the navbar's default rounded borders and increase the bottom margin */ 
   .navbar {
-    margin-bottom: 50px;
-    border-radius: 0;
+      margin-bottom: 50px;
+      border-radius: 0;
   }
 
   /* Remove the jumbotron's default bottom margin */ 
   .jumbotron {
-    margin-bottom: 0;
+      margin-bottom: 0;
   }
 
   /* Add a gray background color and some padding to the footer */
   footer {
-    background-color: #f2f2f2;
-    padding: 25px;
+      background-color: #f2f2f2;
+      padding: 25px;
   }
   </style>
 </head>
 <body>
-  <div class="jumbotron">
-    <div class="container text-center">
-      <h1>ShopShop</h1>      
-      <p>Providing the best grocerers' groceries</p>
+    <div class="jumbotron">
+      <div class="container text-center">
+        <h1>ShopShop</h1>      
+        <p>Providing the best grocerers' groceries</p>
     </div>
-  </div>
+</div>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-        <a class="navbar-brand" href="#">Logo</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
-          <li class="active"><a href="#">Products</a></li>
-          <li><a href="#">Deals</a></li>
-          <li><a href="#">Stores</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </nav>
-  
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-<<<<<<< HEAD
-      <a class="navbar-brand" href="#">Product Categories</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Produce
-          <span class="caret"></span></a>
-=======
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -110,54 +75,27 @@
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Category
           <span class="caret"></span></button>
->>>>>>> 3bcd8e1f7df4d4e2d3b009f4fa1f9f75b7346ef8
           <ul class="dropdown-menu">
+            
+            <li class="dropdown-header">-Produce-</li>
             <li><a href="#">Fruit</a></li>
-            <li><a href="#">Vegetables</a></li>
-          </ul>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bakery
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Cakes</a></li>
-                <li><a href="#">Bread</a></li>
-                <li><a href="#">Pies</a></li> 
-              </ul>
-            </li>
-          </li>
+            <li class="disabled"><a href="#">Vegetables</a></li>
+            <li class="dropdown-header">-Meats-</li>
+            <li class="disabled"><a href="#">Beef</a></li>
+            <li class="disabled"><a href="#">Poultry</a></li>
+            <li class="dropdown-header">-Bakery-</li>
+            <li class="disabled"><a href="#">Cakes</a></li>
+            <li class="disabled"><a href="#">Bread</a></li>
+
         </ul>
-      </div>
-
-      <!-- Product Category Selection Navbar -->
-
-
-      <div class="container" id="result-panel-header">
-        <!-- 
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Category
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-
-              <li class="dropdown-header">-Produce-</li>
-              <li><a href="#">Fruit</a></li>
-              <li class="disabled"><a href="#">Vegetables</a></li>
-              <li class="dropdown-header">-Meats-</li>
-              <li class="disabled"><a href="#">Beef</a></li>
-              <li class="disabled"><a href="#">Poultry</a></li>
-              <li class="dropdown-header">-Bakery-</li>
-              <li class="disabled"><a href="#">Cakes</a></li>
-              <li class="disabled"><a href="#">Bread</a></li>
-
-            </ul>
-          </div>
-        -->
-          <button id="searchButton" type="button" class="btn btn-secondary">Search!</button>
-          <button id="clearButton" type="button" class="btn btn-secondary">Clear Results</button>
+    </div>
+    <button id="searchButton" type="button" class="btn btn-secondary">Search!</button>
+    <button id="clearButton" type="button" class="btn btn-secondary">Clear Results</button>
 
     <!-- Unused add and remove buttons for testing
     <button id="addButton" type="button" class="btn btn-primary-outline">Add Result</button>
     <button id="removeButton" type="button" class="btn btn-danger-outline">Remove Result</button>
-  -->
+    -->
 </div>
 <div class="container" id="result-panel">
 
@@ -170,10 +108,10 @@
             <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
         </div>
     </div>
-  -->
+    -->
 </div>
-
-
+    
+    
 </div>
 </div><br>
 
@@ -182,7 +120,7 @@
   <form class="form-inline">Get deals:
     <input type="email" class="form-control" size="50" placeholder="Email Address">
     <button type="button" class="btn btn-danger">Sign Up</button>
-  </form>
+</form>
 </footer>
 
 </body>
