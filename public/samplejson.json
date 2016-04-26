@@ -1,5 +1,4 @@
 {
-	"groceries" : {
 		"produce" : {
 			"fruit" : {
 				"apples" : {"quantity": 1},
@@ -9,5 +8,4 @@
 				"plums" : {"quantity": 1}
 			}
 		}
-	}
 }
