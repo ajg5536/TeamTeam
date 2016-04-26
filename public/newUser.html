@@ -57,7 +57,11 @@
       </div>
 
 
-		    
+	<script>
+		myFirebaseRef = new Firebase("https://shopshop1.firebaseio.com/users");
+    		myFirebaseRef.set({name: 'bober', text: 'likes cheese'});
+
+	</script>
 
 		    
   </nav>
@@ -75,24 +79,6 @@ ContactNumber: <input type="number" name="zip"><br/><br/>
 
 	
 	
- <script type="text/javascript"> 
-	
-	function fixUsername(username)
-	{
-		if(!username) return false
-		username = username.toLowerCase();
-		username = username.replace(/\./g, ',');
-		return username;
-	}
-
-	var usersRef = new Firebase('https://shopshop1.firebaseio.com/users');
-	var newUser = usersRef.child(fixUsername('AndyG10'));
-	newUser.set({ user: 'AndyG10'});
-	
-
- </script>
-
-
 </form>
 </div>
 </body>
