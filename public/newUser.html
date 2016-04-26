@@ -78,11 +78,11 @@ ContactNumber: <input type="number" name="zip"><br/><br/>
 	
  <script type="text/javascript"> 
 
-	ref.child('users').child('123').set({"first name": "AndyG10"});
-	ref.child('users').push({"first name": "AndyG10"});
-	ref.child('users').child('123').on('value', funcation(snapshot) {...});
+	var usersRef = new Firebase('https://shopshop1.firebaseio.com/users');
+	var newUser = usersRef.child('AndyG10');
+	newUser.set({ user: 'AndyG10'});
 	
- 
+
  </script>
 
 
