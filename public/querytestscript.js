@@ -9,17 +9,28 @@
  * Function - sampleQuery
  */
  $(document).ready(function () {
+
+ 	// 
+ 	var dropdown_value = "null";
+ 	
  	// Change the text of the dropdown menu when it is clicked
  	$(".dropdown-menu li a").click(function(){
  		$(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
  		$(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+ 		dropdown_value = $(this).text();
+ 		console.log(dropdown_value);
  	});
 
  	// Button to query the database
  	$('#searchButton').click(function() {
  		// First clear all items in the results panel
  		$('#result-panel').empty();
- 		queryProduce();
+ 		if (dropdown_value == "null") {
+ 			alert("Please make a selection first!");
+ 			// no action
+ 		} else {
+ 			queryProduce();
+ 		}
  	});
 
  	// Button to clear the search results
@@ -58,7 +69,26 @@
  		rootRef.on("value", function(snap) {
  			var resultObj = snap.val();
  			var category = Object.keys(resultObj.produce);
- 			var items = Object.keys(resultObj.produce.fruit);
+ 			var items = 0;
+ 			if (dropdown_value == "Fruit") {
+	 			items = Object.keys(resultObj.produce.fruit);
+	 		} else if (dropdown_value == "Vegetables") {
+				items = Object.keys(resultObj.produce.vegetables);
+	 		} else if (dropdown_value == "Soups"){
+	 			items = Object.keys(resultObj.Canned.Soup);
+	 		} else if (dropdown_value == "Cheese"){
+	 			items = Object.keys(resultObj.Deli.Cheese);
+	 		} else if (dropdown_value == "Meat"){
+	 			items = Object.keys(resultObj.Deli.Meat);
+	 		} else if (dropdown_value == "Milk"){
+	 			items = Object.keys(resultObj.dairy.milk);
+	 		} else if (dropdown_value == "Chocolate"){
+	 			items = Object.keys(resultObj.Sweets.Chocolate);
+	 		} else if (dropdown_value == "Cereal"){
+	 			items = Object.keys(resultObj.Boxed.Cereal);
+	 		} else {
+	 			console.log("[ERROR] Unknown query");
+	 		}
 	 		for (var i = 0; i < items.length; i++) {
 	 			appendPanel(category, items[i]);
 	 		}

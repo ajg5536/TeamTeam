@@ -62,6 +62,8 @@
           <li><a href="#">Contact</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="./newUser.html"><span class="glyphicon glyphicon-user"></span> New User</a></li>
+    <li><a href="./login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
         </ul>
@@ -70,6 +72,7 @@
     </div>
   </nav>
   
+<!-- new bar added by john
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -95,16 +98,32 @@
 </ul>
 </div>
 </div>
+-->
 </nav>
 
 <div class="container" id="result-panel-header">
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Category
+  <hr>
+    <div class="dropdown">Select Grocery:
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Category</span>
           <span class="caret"></span></button>
-          <ul class="dropdown-menu">
+          <ul id="select_dropdown" class="dropdown-menu">
+            <li class="dropdown-header">-Produce-</li>
             <li><a href="#">Fruit</a></li>
             <li><a href="#">Vegetables</a></li>
+            <li class="dropdown-header">-Canned-</li>
+            <li><a href="#">Soups</a></li>
+            <li class="dropdown-header">-Deli-</li>
+            <li><a href="#">Meat</a></li>
+            <li><a href="#">Cheese</a></li>
+            <li class="dropdown-header">-Dairy-</li>
+            <li><a href="#">Milk</a></li>
+            <li class="dropdown-header">-Sweets-</li>
+            <li><a href="#">Chocolate</a></li>
+            <li class="dropdown-header">-Boxed-</li>
+            <li><a href="#">Cereal</a></li>
+            
           </ul>
+          <!-- John's new dropdown menu
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bakery
               <span class="caret"></span></a>
@@ -114,8 +133,10 @@
                 <li><a href="#">Pies</a></li> 
               </ul>
             </li>
+          -->
           </li>
         </ul>
+        <hr>
       </div>
 
       <!-- Product Category Selection Navbar -->
