@@ -56,7 +56,10 @@
         </ul>
       </div>
 
-    </div>
+
+		    
+
+		    
   </nav>
 <div align="center">
 <h1>New User</h1>
@@ -69,6 +72,22 @@ Street Address: <input type="text" name="street"><br/><br/>
 Zip: <input type="number" name="zip"><br/><br/>
 ContactNumber: <input type="number" name="zip"><br/><br/>
 <input type="submit" name="submit" value="Submit">
+
+	<!--->
+	Javascript Function for writing new users to Firebase
+	<-->
+ <script type="text/javascript"> 
+
+	var ref = new Firebase("https://shopshop1.firebaseio.com");
+	var ref = ref.push();
+	    ref.set({ 'Username': 'username' });
+	    
+	    var path = ref.toString();
+											                            }
+
+ </script>
+
+
 </form>
 </div>
 </body>
