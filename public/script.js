@@ -12,6 +12,7 @@
 console.log("Scripts file loaded");
 
  $(document).ready(function() {
+ 	/*
  	console.log("File loaded");
  	var myFirebaseRef = new Firebase("https://shopshop1.firebaseio.com/");
     //myFirebaseRef.set({name: 'bober', text: 'likes cheese'});
@@ -29,5 +30,6 @@ console.log("Scripts file loaded");
  		console.log("Attempting to add " + thiscat + ":" + thisprod + " to the database...");
  		
  	});
+	*/
 
  });
