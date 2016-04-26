@@ -100,7 +100,7 @@
  	// Adds an item to the result-panel div
  	function appendPanel(resultCat, resultVal) {
  
- 			$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">' + resultVal + '</div><div class="panel-body"><img src="images/' + resultVal + '.jpg" class="img-responsive" style="width:100%" alt="Image not found"></div><div class="panel-footer"><button type="button" class="btn btn-secondary">More!</button></div></div></div></div>');
+ 			$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">' + resultVal + '</div><div class="panel-body"><img src="images/' + resultVal + '.jpg" class="img-responsive" style="width:100%" alt="Image not found"></div><div class="panel-footer"><button type="button" class="btn btn-secondary">Buy!</button></div></div></div></div>');
  	
  	}
 
