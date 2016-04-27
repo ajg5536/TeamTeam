@@ -58,7 +58,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="./newUser.html"><span class="glyphicon glyphicon-user"></span> New User</a></li>
     <li><a href="./login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li><a href="./account.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
         </ul>
       </div>
@@ -90,15 +90,17 @@
 			    			    });
 
 function addUser(user) {
-	  var myDataRef = new Firebase('https://shopshop1.firebaseio.com/user');
+	  var DataRef = new Firebase('https://shopshop1.firebaseio.com/');
+	  myDataRef = DataRef.child("user");
 	    var firstname = $('#firstname').val();
 	      var lastname = $('#lastname').val();
 	      var username = $('#username').val();
 	      var password = $('#password').val();
 	      var street = $('#street').val();
 	      var zip = $('#zip').val();
-
-	        myDataRef.push({firstname: firstname, lastname: lastname, username: username, password: password, street: street,
+		
+		
+	        myDataRef.child(username).set({firstname: firstname, lastname: lastname, username: username, password: password, street: street,
 				zip: zip});
 		    user.preventDefault();
 }

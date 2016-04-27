@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>ShopShop - Login</title>
+<title>ShopShop - Account</title>
 <script src ="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -53,8 +53,10 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="./newUser.html"><span class="glyphicon glyphicon-user"></span> New User</a></li>
-    <li class="active"><a href="./login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-          <li><a href="./account.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+	  <li><a href="./login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+    <li class="active"><a href="./account.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+
+         
           <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
         </ul>
       </div>
@@ -62,56 +64,45 @@
     </div>
   </nav>
 <div align="center">
-<h1>Login Page</h1>
-<form method="post"> 
-Username: <input id="username" type="text" name="username"><br/><br/>
-Password: <input id="password" type="password" name="password"><br/><br/>
-<button type="submit" class="btn" onclick="queryUsers()">Login</button>
+<h1>Your Account</h1>
+<h2>Post Items</h2>
+<form> 
+Category: <input id="category" type="text" name="category"><br/><br/>
+Subcategory: <input id="subcategory" type="text" name="subcategory"><br/><br/>
+Item: <input id="item" type="text" name="item"><br/><br/>
+Quantity: <input id="quantity" type="number" name="quantity"><br/><br/>
+<button type="submit" class="btn" onclick="sellItem()">Post</button>
 </form>
 
 <script>
-		var UserRef = new Firebase('https://shopshop1.firebaseio.com/user');	
+		var myUserRef = new Firebase('https://shopshop1.firebaseio.com/groceries');
+		myUserRef.on('child_added', function(snapshot) {
+				var post = snapshot.val();
+				});
 			
-	function queryUsers()
+	function sellItem()
 	{	
-		var myUserRef =  new Firebase('https://shopshop1.firebaseio.com/user');
+		var myUserRef =  new Firebase('https://shopshop1.firebaseio.com/groceries');
+		
+		var category = $('#category').val();
+		var subcategory = $('#subcategory').val();
+		var item = $('#item').val();
+		var quantity = $('#quantity').val();
+
+		var newUserRef = myUserRef.child(category);
+		var newerUserRef = newUserRef.child(subcategory);
+		//var newestUserRef = newerUserRef.child(item);
+	//	var wownew = newerUserRef.child(quantity);
+		
+		//myUserRef.child(category).set({category: category});
+	//	newUserRef.child(category).set({subcategory: subcategory});
+		//newerUserRef.child(subcategory).set({item: item});
+		newerUserRef.child(item).set({quantity: quantity});
+
+
+	}
 		
 		
-		//var usernameRef = myUserRef.child(key/username);
-		//var passwordRef = myUserRef.child(key/password);
-	
-				//var resultObj = snap.val();
-				var username = $('#username').val();
-				var password = $('#password').val();
-				console.log(username);
-				var key = myUserRef.child(username).key();
-				var childpath = myUserRef.child(username);
-				var childpass = myUserRef.child("user/password").key();
-
-				console.log(childpass);
-				console.log(password);
-
-				childpath.once("value",function(snapshot){
-						var pass = snapshot.val();
-						var exist = snapshot.exists();
-						if(exist)
-						{	
-							if(pass.password == password)
-							{
-								alert("Logging In")
-							}
-							else
-							{
-								alert("Invalid Login Credentials");
-							}
-
-						}
-						else
-						{
-							alert("Invalid Login Credentials");
-						}
-						});
-						}
 				
 
 </script>
