@@ -40,7 +40,7 @@
 		$('#result-panel').empty();
 		subCat = $(this).parents(".panel panel-primary").find(".panel-heading").text();
 		moreQuery(subCat);
-	}
+	});
  	// Button to clear the search results
  	$('#clearButton').click(function() {
  		$('#result-panel').empty();
