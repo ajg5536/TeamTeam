@@ -12,6 +12,7 @@
 
  	// 
  	var dropdown_value = "null";
+ 	var subCat = "null";
  	
  	// Change the text of the dropdown menu when it is clicked
  	$(".dropdown-menu li a").click(function(){
@@ -33,6 +34,13 @@
  		}
  	});
 
+	// Button to query the database after pressing the 'More!' button for a subcategory
+	
+	$('#moreButton').click(function() {
+		$('#result-panel').empty();
+		subCat = $(this).parents(".panel panel-primary").find(".panel-heading").text();
+		moreQuery(subCat);
+	}
  	// Button to clear the search results
  	$('#clearButton').click(function() {
  		$('#result-panel').empty();
@@ -100,9 +108,46 @@
  	// Adds an item to the result-panel div
  	function appendPanel(resultCat, resultVal) {
  
- 			$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">' + resultVal + '</div><div class="panel-body"><img src="images/' + resultVal + '.jpg" class="img-responsive" style="width:100%" alt="Image not found"></div><div class="panel-footer"><button type="button" class="btn btn-secondary">Buy!</button></div></div></div></div>');
+ 			$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">' + resultVal + '</div><div class="panel-body"><img src="images/' + resultVal + '.jpg" class="img-responsive" style="width:100%" alt="Image not found"></div><div class="panel-footer"><button id="moreButton" type="button" class="btn btn-secondary">More!</button></div></div></div></div>');
  	
  	}
+	
+	//Query database for items in subcategory
+	function moreQuery(resultVal){
+	var rootRef = new Firebase('https://shopshop1.firiebaseio.com/groceries/');
+	rootRef.on("value", function(snap) {
+ 		var resultObj = snap.val();
+ 		var items = 0;
+ 		if (dropdown_value == "Fruit") {
+				items = Object.keys(resultObj.produce.fruit.resultVal);
+		} else if (dropdown_value == "Vegetables") {
+			items = Object.keys(resultObj.produce.vegetables.resultVal);
+		} else if (dropdown_value == "Soups"){
+			items = Object.keys(resultObj.Canned.Soup.resultVal);
+		} else if (dropdown_value == "Cheese"){
+	 		items = Object.keys(resultObj.Deli.Cheese.resultVal);
+	 	} else if (dropdown_value == "Meat"){
+	 		items = Object.keys(resultObj.Deli.Meat.resultVal);
+	 	} else if (dropdown_value == "Milk"){
+	 		items = Object.keys(resultObj.dairy.milk.resultVal);
+	 	} else if (dropdown_value == "Chocolate"){
+	 		items = Object.keys(resultObj.Sweets.Chocolate.resultVal);
+	 	} else if (dropdown_value == "Cereal"){
+	 		items = Object.keys(resultObj.Boxed.Cereal.resultVal);
+	 	} else {
+	 		console.log("[ERROR] Unknown query");
+	 	}
+	 	for (var i = 0; i < items.length; i++) {
+	 		appendPanelTwo(items[i]);
+	 	}
+ 	}, function (errorObject) {
+ 		console.log("The read failed: " + errorObject.code);
+ 	});
+ }
 
+//Add objects to the panel
+	function appendPanelTwo(resultVal){
+		$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">' + resultVal + '</div><div class="panel-body"><img src="images/' + resultVal + '.jpg" class="img-responsive" style="width:100%" alt="Image not found"></div><div class="panel-footer"><button type="button" class="btn btn-secondary">Buy!</button></div></div></div></div>');
+	}
  });
 
