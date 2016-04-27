@@ -1,8 +1,11 @@
 <html>
 <head>
 <title>ShopShop - Login</title>
+<script src ="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<style>
   /* Remove the navbar's default rounded borders and increase the bottom margin */ 
   .navbar {
@@ -60,11 +63,59 @@
   </nav>
 <div align="center">
 <h1>Login Page</h1>
-<form action="" method="post">
-Username: <input type="text" name="username"><br/><br/>
-Password: <input type="password" name="password"><br/><br/>
-<input type="submit" name="submit" value="Login">
+<form method="post"> 
+Username: <input id="username" type="text" name="username"><br/><br/>
+Password: <input id="password" type="password" name="password"><br/><br/>
+<button type="submit" class="btn" onclick="queryUsers()">Login</button>
 </form>
+
+<script>
+		var UserRef = new Firebase('https://shopshop1.firebaseio.com/user');	
+			
+	function queryUsers()
+	{	
+		var myUserRef =  new Firebase('https://shopshop1.firebaseio.com/user');
+		
+		
+		//var usernameRef = myUserRef.child(key/username);
+		//var passwordRef = myUserRef.child(key/password);
+	
+				//var resultObj = snap.val();
+				var username = $('#username').val();
+				var password = $('#password').val();
+				console.log(username);
+				var key = myUserRef.child(username).key();
+				var childpath = myUserRef.child(username);
+				var childpass = myUserRef.child("user/password").key();
+
+				console.log(childpass);
+				console.log(password);
+
+				childpath.once("value",function(snapshot){
+						var pass = snapshot.val();
+						var exist = snapshot.exists();
+						if(exist)
+						{	
+							if(pass.password == password)
+							{
+								alert("Logging In")
+							}
+							else
+							{
+								alert("Invalid Login Credentials");
+							}
+
+						}
+						else
+						{
+							alert("Invalid Login Credentials");
+						}
+						});
+						}
+				
+
+</script>
+
 </div>
 </body>
 </html>
