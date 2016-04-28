@@ -39,6 +39,7 @@
 	$('#moreButton').click(function() {
 		$('#result-panel').empty();
 		subCat = $(this).parents(".panel panel-primary").find(".panel-heading").text();
+		alert(subCat);
 		moreQuery(subCat);
 	});
  	// Button to clear the search results
