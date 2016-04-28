@@ -36,12 +36,12 @@
 
 	// Button to query the database after pressing the 'More!' button for a subcategory
 	
-	$('#result-panel').on('click', '#moreButton', function() {
+	$('#result-row').on('click', '#moreButton', function() {
 		alert("Looking for more");
-		$('#result-panel').empty();
-		subCat = $(this).parents(".panel panel-primary").find(".panel-heading").text();
-		alert(subCat);
-		moreQuery(subCat);
+		//$('#result-panel').empty();
+		//subCat = $(this).parents(".panel panel-primary").find(".panel-heading").text();
+		//alert(subCat);
+		//moreQuery(subCat);
 	});
  	// Button to clear the search results
  	$('#clearButton').click(function() {
@@ -110,7 +110,7 @@
  	// Adds an item to the result-panel div
  	function appendPanel(resultCat, resultVal) {
  
- 			$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary"><div class="panel-heading">' + resultVal + '</div><div class="panel-body"><img src="images/' + resultVal + '.jpg" class="img-responsive" style="width:100%" alt="Image not found"></div><div class="panel-footer"><button id="moreButton" type="button" class="btn btn-secondary">More!</button></div></div></div></div>');
+ 			$('#result-panel').append('<div class="row"><div class="col-sm-4"><div class="panel panel-primary" id = "result-row"><div class="panel-heading">' + resultVal + '</div><div class="panel-body"><img src="images/' + resultVal + '.jpg" class="img-responsive" style="width:100%" alt="Image not found"></div><div class="panel-footer"><button id="moreButton" type="button" class="btn btn-secondary">More!</button></div></div></div></div>');
  	
  	}
 	
