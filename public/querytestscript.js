@@ -36,7 +36,7 @@
 
 	// Button to query the database after pressing the 'More!' button for a subcategory
 	
-	$('#moreButton').click(function() {
+	$('#result-panel').on("click", '#moreButton', function() {
 		$('#result-panel').empty();
 		subCat = $(this).parents(".panel panel-primary").find(".panel-heading").text();
 		alert(subCat);
