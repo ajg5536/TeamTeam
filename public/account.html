@@ -57,7 +57,7 @@
     <li class="active"><a href="./account.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
 
          
-          <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+          <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
         </ul>
       </div>
 
@@ -65,44 +65,82 @@
   </nav>
 <div align="center">
 <h1>Your Account</h1>
-<h2>Post Items</h2>
-<form> 
-Category: <input id="category" type="text" name="category"><br/><br/>
-Subcategory: <input id="subcategory" type="text" name="subcategory"><br/><br/>
-Item: <input id="item" type="text" name="item"><br/><br/>
-Quantity: <input id="quantity" type="number" name="quantity"><br/><br/>
-<button type="submit" class="btn" onclick="sellItem()">Post</button>
-</form>
+
+<button type="submit" class="btn" onclick="getAccount()">Get Account Info</button>
+</br></br>
+<textarea id="txtarea" rows = "10" cols = "30"></textarea>
 
 <script>
-		var myUserRef = new Firebase('https://shopshop1.firebaseio.com/groceries');
-		myUserRef.on('child_added', function(snapshot) {
-				var post = snapshot.val();
-				});
+
+function getAccount(){	
+	var accountRef = new Firebase("https://shopshop1.firebaseio.com/user");
+	
+	accountRef.once("value", function(snapshot){
+			snapshot.forEach(function(childSnapshot){
+				var user = childSnapshot.key();
+				var userRef = accountRef.child(user);
+				var loggedlastname;
+				var loggedfirstname;
+				var loggedstreet;
+				var loggedzip;
+				var loggedusername;
+				var complete;
+				
+
+				userRef.once("value", function(userSnap){
+					userSnap.forEach(function(childSnap){
+						var property = childSnap.key();
+						var logged = childSnap.val();
+						var childuserRef = userRef.child(property);
+						
+						if(property == "firstname")
+						{	
+							console.log("In first name");
+							loggedfirstname = logged;
+							console.log("logged first name", loggedfirstname);
+						}
+						if(property == "lastname")
+						{
+							loggedlastname = logged;
+						}
+						if(property == "street")
+						{
+							loggedstreet = logged;
+						}
+						if(property == "username")
+						{
+							loggedusername = logged;
+						}
+						if(property == "zip")
+						{
+							loggedzip = logged;
+						}
+
+						//console.log(property);
+
+						if(property == 'islogged')
+						{
+							complete = 1;
+
+						}
+						if(property == 'zip' && complete == 1)
+						{
+							var newpara = "First Name: " + loggedfirstname + String.fromCharCode(13) + "Last Name: " + loggedlastname + String.fromCharCode(13) + "Username: " + loggedusername + String.fromCharCode(13) + "Street: " + loggedstreet + String.fromCharCode(13) + "Zipcode:" + loggedzip;
+							document.getElementById("txtarea").innerHTML = newpara;
+						}
+						});
+
+							return true;
+						});
+
+						});
+						
+					});
+				}
+
 			
-	function sellItem()
-	{	
-		var myUserRef =  new Firebase('https://shopshop1.firebaseio.com/groceries');
 		
-		var category = $('#category').val();
-		var subcategory = $('#subcategory').val();
-		var item = $('#item').val();
-		var quantity = $('#quantity').val();
-
-		var newUserRef = myUserRef.child(category);
-		var newerUserRef = newUserRef.child(subcategory);
-		//var newestUserRef = newerUserRef.child(item);
-	//	var wownew = newerUserRef.child(quantity);
-		
-		//myUserRef.child(category).set({category: category});
-	//	newUserRef.child(category).set({subcategory: subcategory});
-		//newerUserRef.child(subcategory).set({item: item});
-		newerUserRef.child(item).set({quantity: quantity});
-
-
-	}
-		
-		
+			
 				
 
 </script>
